@@ -7,7 +7,8 @@
     "helmet": "^7.0.0",
     "morgan": "^1.10.0",
     "mysql2": "^3.6.0",
-    "sequelize": "^6.32.1"
+    "sequelize": "^6.32.1",
+    "validator": "^13.11.0"
   },
   "name": "diego_jara-trabajo_practico_1-backend",
   "version": "1.0.0",
@@ -16,7 +17,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Diego Jara",
   "license": "ISC",
   "description": ""
 }
