@@ -11,4 +11,13 @@ const sequelize = new Sequelize({
   password: process.env.DB_PASSWORD,
 });
 
+// Sincronizar automáticamente las tablas con la base de datos
+sequelize.sync()
+  .then(() => {
+    console.log('Tablas sincronizadas con la base de datos');
+  })
+  .catch((error) => {
+    console.error('Error al sincronizar las tablas:', error);
+  });
+
 export default sequelize;

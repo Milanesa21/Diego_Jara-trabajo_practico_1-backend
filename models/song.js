@@ -1,11 +1,16 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../database/database.js';
-import Playlist from './playlist.js';
 
 class Song extends Model {}
 
-Song.init ({
-    tittle: {
+Song.init({
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false
+    },
+    title: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
