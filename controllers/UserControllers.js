@@ -1,5 +1,6 @@
 import User from '../models/user.js';
 
+// Funciones de controllers para los usuarios
 export const createUser = async (req, res) => {
     try {
         const { username, email } = req.body;
