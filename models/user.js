@@ -1,6 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
-import sequelize from '../database/db';
-import Playlist from './playlist';
+import sequelize from '../database/database.js';
+import Playlist from './playlist.js';
 
 class User extends Model {}
 
@@ -40,4 +40,4 @@ User.init({
 User.hasMany(Playlist);
 Playlist.belongsTo(User);
 
-export default User;
+export default User

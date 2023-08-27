@@ -1,7 +1,7 @@
-import { express } from 'express';
-import { createPlaylist, getAllPlaylists, getPlaylistById, updatePlaylist } from '../controllers/PlaylistControllers.js';
+import  express  from 'express';
+import { createPlaylist, getAllPlaylists, getPlaylistById, updatePlaylist, deletePlaylist } from '../controllers/PlaylistControllers.js';
 
-const router = express.router();
+const router = express.Router();
 
 //Definir rutas para las playlists
 router.post('/', createPlaylist);

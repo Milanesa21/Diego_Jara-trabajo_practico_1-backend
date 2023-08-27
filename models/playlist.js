@@ -1,7 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
-import Sequelize from '../database/database.js';
+import sequelize from '../database/database.js';
 import User from './user.js'
-import Sonf from './song.js';
+import Song from './song.js';
 
 class Playlist extends Model{}
 

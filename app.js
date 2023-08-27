@@ -2,11 +2,12 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import userRoutes from './routes/userRoutes';
-import playlistRoutes from './routes/playlistRoutes';
-import songRoutes from './routes/songRoutes';
+import userRoutes from './routes/user.Routes.js';
+import playlistRoutes from './routes/Playlist.Routes.js';
+import songRoutes from './routes/Song.Routes.js';
 import dotenv from 'dotenv';
-import { sequelize } from './database/database.js';
+import sequelize from './database/database.js';
+
 
 dotenv.config();
 
@@ -36,7 +37,7 @@ sequelize
 
 
 // Definicion de las rutas
-app.use('users', userRoutes);
+app.use('/users', userRoutes);
 app.use('/playlists', playlistRoutes);
 app.use('/songs', songRoutes);
 
