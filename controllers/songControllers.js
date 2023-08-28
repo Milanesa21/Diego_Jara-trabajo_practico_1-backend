@@ -62,3 +62,44 @@ export const DeleteSong = async (req, res) => {
     res.status(500).json({ error: 'Error al eliminar la cancion' });
  }
 };
+
+export const associateSongWithPlaylist = async (req, res) => {
+    try {
+        const { playlistId } = req.params;
+        const { songId } = req.body;
+
+        const playlist = await Playlist.findByPk(playlistId);
+        const song = await Song.findByPk(songId);
+
+        if (!playlist || !song) {
+            return res.status(404).json({ error: 'Playlist o canción no encontrada' });
+        }
+
+        await playlist.addSong(song);
+
+        res.status(200).json({ message: 'Canción asociada con la playlist' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al asociar la canción con la playlist' });
+    }
+};
+
+export const disassociateSongFromPlaylist = async (req, res) => {
+    try {
+        const { playlistId, songId } = req.params;
+
+        const playlist = await Playlist.findByPk(playlistId);
+        const song = await Song.findByPk(songId);
+
+        if (!playlist || !song) {
+            return res.status(404).json({ error: 'Playlist o canción no encontrada' });
+        }
+
+        await playlist.removeSong(song);
+
+        res.status(200).json({ message: 'Canción eliminada de la playlist' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al eliminar la canción de la playlist' });
+    }
+};
