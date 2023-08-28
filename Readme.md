@@ -24,7 +24,12 @@ DB_PORT=
 DB_DIALECT=
 ```
 
-## Y para iniciarel proyecto aplicar el comando: 
+## Para iniciar el proyecto, aplicar el comando: 
+```bash
+npm start
+```
+
+## O para iniciar el proyecto en modo desarrollo, aplicar el comando: 
 ```bash
 npm run dev
 ```
