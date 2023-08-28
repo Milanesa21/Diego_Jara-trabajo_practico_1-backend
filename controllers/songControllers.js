@@ -34,22 +34,24 @@ export const GetSongById = async (req, res) => {
  }
 };
 
-export const  updateSong = async (req, res) =>{
-   try {
-       const { title, artist } = req.body;
-        const [updatedRowsCount, updateSongs ] = await Song.update(
-           { title, artist },
-           { where: {id: req.params.id }, returning: true }
-    );
+export const updateSong = async (req, res) => {
+    try {
+        const { title, artist } = req.body;
+        const [updatedRowsCount, updatedSongs] = await Song.update(
+            { title, artist },
+            { where: { id: req.params.id }, returning: true }
+        );
+
         if (updatedRowsCount > 0) {
-        res.json(updateSong[0]);
-    }   else {
-        res.status(404).json({ error: 'Cancion no encontrada' });
+            res.json(updatedSongs[0]);
+        } else {
+            res.status(404).json({ error: 'Cancion no encontrada' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: 'Error al actualizar la cancion' });
     }
- }  catch (error) {
-    res.status(500).json({ error: 'Error al actualizar la cancion' });
- }
 };
+
 
 export const DeleteSong = async (req, res) => {
     try {
