@@ -23,6 +23,8 @@ Playlist.init({
     modelName: 'Playlist'
 });
 
-Song.hasMany(Playlist);           // Relación: Una canción puede estar en varias listas
+Playlist.hasMany(Song, {
+    foreignKey: "idPlaylist"
+});                               // Relación: Una canción puede estar en varias listas
 
 export default Playlist;

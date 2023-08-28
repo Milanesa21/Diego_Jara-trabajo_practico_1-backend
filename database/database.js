@@ -7,11 +7,11 @@ dotenv.config();
 
 // Crear una instancia de Sequelize para la conexión a la base de datos
 const sequelize = new Sequelize({
-  dialect: 'mysql',                 // Tipo de base de datos que se utilizará (MySQL en este caso)
-  host: process.env.DB_HOST,        // Obtener la dirección del host desde las variables de entorno
-  database: process.env.DB_NAME,    // Obtener el nombre de la base de datos desde las variables de entorno
-  username: process.env.DB_USER,    // Obtener el nombre de usuario de la base de datos desde las variables de entorno
-  password: process.env.DB_PASSWORD,// Obtener la contraseña de la base de datos desde las variables de entorno
+  dialect: 'mysql',                 
+  host: process.env.DB_HOST,       
+  database: process.env.DB_NAME,    
+  username: process.env.DB_USER,   
+  password: process.env.DB_PASSWORD,
 });
 
 // Sincronizar automáticamente las definiciones de modelo con la base de datos

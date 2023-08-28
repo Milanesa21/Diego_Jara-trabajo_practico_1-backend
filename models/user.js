@@ -19,14 +19,14 @@ User.init({
         }
     },
     email: {
-        type: DataTypes.STRING,         // Dirección de correo electrónico
+        type: DataTypes.STRING,          // Dirección de correo electrónico
         allowNull: false,
         validate: {
             isEmail: true
         }
     },
     password: {
-        type: DataTypes.STRING,         // Contraseña del usuario
+        type: DataTypes.STRING,          // Contraseña del usuario
         allowNull: false,
         unique: false,
         validate: {
@@ -41,7 +41,8 @@ User.init({
     modelName: 'User'                 // Nombre del modelo en la base de datos
 });
 
-User.hasMany(Playlist);               // Relación: Un usuario puede tener muchas listas de reproducción
-Playlist.belongsTo(User);             // Relación: Una lista de reproducción pertenece a un usuario
+User.hasMany(Playlist, {
+    foreignKey: "idUser"
+});                                   // Relación: Un usuario puede tener muchas listas de reproducción
 
 export default User;
