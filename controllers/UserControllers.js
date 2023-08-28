@@ -1,6 +1,6 @@
 import User from '../models/user.js';
 
-// Funciones de controllers para los usuarios
+// Crear un nuevo usuario
 export const createUser = async (req, res) => {
     try {
         const { username, email, password } = req.body;
@@ -12,6 +12,7 @@ export const createUser = async (req, res) => {
     }
 };
 
+// Obtener todos los usuarios
 export const getAllUsers = async (req, res) => {
     try {
         const users = await User.findAll();
@@ -21,6 +22,7 @@ export const getAllUsers = async (req, res) => {
     }
 };
 
+// Obtener un usuario por su ID
 export const getUserById = async (req, res) => {
     try {
         const user = await User.findByPk(req.params.id);
@@ -34,6 +36,7 @@ export const getUserById = async (req, res) => {
     }
 };
 
+// Actualizar un usuario por su ID
 export const UpdateUser = async (req, res) => {
     try {
         const { username, email } = req.body;
@@ -51,6 +54,7 @@ export const UpdateUser = async (req, res) => {
     }
 };
 
+// Eliminar un usuario por su ID
 export const deleteUser = async (req, res) => {
     try {
         const deletedRowCount = await User.destroy({ where: { id: req.params.id } });

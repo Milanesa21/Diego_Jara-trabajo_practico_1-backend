@@ -1,7 +1,7 @@
 import Playlist from '../models/playlist.js';
 import Song from '../models/song.js';
 
-// Funciones de controllers para las canciones
+// Crear una nueva canción
 export const createSong = async (req, res) => {
     try { 
         const { title, artist } =req.body;
@@ -12,6 +12,7 @@ export const createSong = async (req, res) => {
  }
 };
 
+// Obtener todas las canciones
 export const GetAllSongs = async (req, res) => {
     try { 
        const songs = await Song.findAll();
@@ -21,6 +22,7 @@ export const GetAllSongs = async (req, res) => {
  }
 };
 
+// Obtener una canción por su ID
 export const GetSongById = async (req, res) => {
    try { 
        const song = await Song.findByPk(req.params.id);
@@ -34,6 +36,7 @@ export const GetSongById = async (req, res) => {
  }
 };
 
+// Actualizar una canción por su ID
 export const updateSong = async (req, res) => {
     try {
         const { title, artist } = req.body;
@@ -52,7 +55,7 @@ export const updateSong = async (req, res) => {
     }
 };
 
-
+// Eliminar una canción por su ID
 export const DeleteSong = async (req, res) => {
     try {
         const deletedRowCount = await Song.destroy({ where: { id: req.params.id } });
@@ -66,6 +69,7 @@ export const DeleteSong = async (req, res) => {
  }
 };
 
+// Asociar una canción con una playlist
 export const associateSongWithPlaylist = async (req, res) => {
     try {
         const { playlistId } = req.params;
@@ -87,6 +91,7 @@ export const associateSongWithPlaylist = async (req, res) => {
     }
 };
 
+// Desasociar una canción de una playlist
 export const disassociateSongFromPlaylist = async (req, res) => {
     try {
         const { playlistId, songId } = req.params;

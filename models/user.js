@@ -6,42 +6,42 @@ class User extends Model {}
 
 User.init({
     idUser: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER,        // Identificador del usuario
         primaryKey: true,
         autoIncrement: true,
         allowNull: true
     },
     username: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING,         // Nombre de usuario
         allowNull: false,
         validate: {
             notEmpty: true
         }
     },
     email: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING,         // Dirección de correo electrónico
         allowNull: false,
         validate: {
             isEmail: true
         }
     },
     password: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING,         // Contraseña del usuario
         allowNull: false,
         unique: false,
         validate: {
             len: {
-                args: [8, undefined],
+                args: [8, undefined],    // Validación de longitud mínima
                 msg: 'La contraseña debe contener al menos 8 caracteres'
             }
         }
     } 
 }, {
-    sequelize,
-    modelName: 'User'
+    sequelize,                         // Instancia de Sequelize para la conexión a la base de datos
+    modelName: 'User'                 // Nombre del modelo en la base de datos
 });
 
-User.hasMany(Playlist);
-Playlist.belongsTo(User);
+User.hasMany(Playlist);               // Relación: Un usuario puede tener muchas listas de reproducción
+Playlist.belongsTo(User);             // Relación: Una lista de reproducción pertenece a un usuario
 
 export default User;

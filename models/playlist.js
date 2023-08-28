@@ -6,13 +6,13 @@ class Playlist extends Model {}
 
 Playlist.init({
     idPlaylist: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER,  // Identificador de la playlist
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
     },
     name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING,   // Nombre de la playlist
         allowNull: false,
         validate: {
             notEmpty: true
@@ -23,7 +23,6 @@ Playlist.init({
     modelName: 'Playlist'
 });
 
-Song.hasMany(Playlist);
-Playlist.belongsTo(Song);
+Song.hasMany(Playlist);           // Relación: Una canción puede estar en varias listas
 
 export default Playlist;
