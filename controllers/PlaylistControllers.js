@@ -1,4 +1,6 @@
-    import Playlist from '../models/playlist.js';
+import Playlist from '../models/playlist.js';
+import User from '../models/user.js';
+import Song from '../models/song.js';
 
     // Funciones de controllerspara las playlist
     export const createPlaylist = async (req, res) => {
@@ -22,18 +24,29 @@
     }
     };
 
-    export const getPlaylistById = async (req, res) => {
-        try { 
-            const playlist = await Playlist.findByPk(req.params.id);
-            if (playlist) {
-            res.json(playlist);
-        } else {
-            res.status(404).json({ error: 'Playlist no encontrada' });
+
+   
+export const getPlaylistById = async (req, res) => {
+    try {
+        const playlistId = req.params.id;
+
+        const playlist = await Playlist.findByPk(playlistId, {
+            include: [
+                { model: User, attributes: ['id', 'username', 'email'] },
+                { model: Song }
+            ]
+        });
+
+        if (!playlist) {
+            return res.status(404).json({ error: 'Playlist no encontrada' });
         }
+
+        res.json(playlist);
     } catch (error) {
-        res.status(500).json({ error: 'Errpr al obtener la Playlist'});
+        console.error(error);
+        res.status(500).json({ error: 'Error al obtener la playlist' });
     }
-    };
+};
 
     export const updatePlaylist = async (req, res) => {
         try {

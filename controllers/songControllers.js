@@ -1,4 +1,5 @@
-import Song from '../models/song.js'
+import Playlist from '../models/playlist.js';
+import Song from '../models/song.js';
 
 // Funciones de controllers para las canciones
 export const createSong = async (req, res) => {
