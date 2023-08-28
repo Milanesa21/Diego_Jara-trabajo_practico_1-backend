@@ -5,16 +5,15 @@ import Playlist from './playlist.js';
 class User extends Model {}
 
 User.init({
-    id: {
+    idUser: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        allowNull: false
+        allowNull: true
     },
     username: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
         validate: {
             notEmpty: true
         }
@@ -22,7 +21,6 @@ User.init({
     email: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
         validate: {
             isEmail: true
         }

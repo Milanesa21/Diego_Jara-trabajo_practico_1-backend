@@ -4,7 +4,7 @@ import sequelize from '../database/database.js';
 class Song extends Model {}
 
 Song.init({
-    id: {
+    idSong: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -30,3 +30,4 @@ Song.init({
 });
 
 export default Song;
+ 

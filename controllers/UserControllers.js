@@ -3,10 +3,11 @@ import User from '../models/user.js';
 // Funciones de controllers para los usuarios
 export const createUser = async (req, res) => {
     try {
-        const { username, email } = req.body;
-        const newUser = await User.create({ username, email });
+        const { username, email, password } = req.body;
+        const newUser = await User.create({ username, email, password });
         res.status(201).json(newUser);
     } catch (error) {
+        console.error(error)
         res.status(500).json({ error: 'Error al crear el usuario' });
     }
 };

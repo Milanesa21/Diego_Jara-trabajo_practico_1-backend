@@ -5,7 +5,7 @@ import Song from './song.js';
 class Playlist extends Model {}
 
 Playlist.init({
-    id: {
+    idPlaylist: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -23,7 +23,7 @@ Playlist.init({
     modelName: 'Playlist'
 });
 
-Playlist.hasMany(Song);
-Song.belongsTo(Playlist);
+Song.hasMany(Playlist);
+Playlist.belongsTo(Song);
 
 export default Playlist;
